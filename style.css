@@ -1,0 +1,28 @@
+body {
+  font-family: sans-serif;
+}
+#question-container {
+  text-align: center;
+  margin-top: 30px;
+}
+#question {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+#answers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#answers button {
+  margin-bottom: 10px;
+}
+#score-container {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 20px;
+}
+#score {
+  font-weight: bold;
+}
