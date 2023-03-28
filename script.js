@@ -1,10 +1,11 @@
 "use strict";
-
 const url =
   "https://gist.githubusercontent.com/bertez/2528edb2ab7857dae29c39d1fb669d31/raw/4891dde8eac038aa5719512adee4b4243a8063fd/quiz.json";
 const questionEl = document.getElementById("question");
 const answerButtonsEl = document.getElementById("answers");
 const scoreEl = document.getElementById("score");
+const darkModeButton = document.getElementById("dark-mode-button");
+darkModeButton.addEventListener("click", toggleDarkMode);
 let currentQuestionIndex = 0;
 let score = 0;
 let questions = [];
@@ -14,6 +15,15 @@ async function getQuestions() {
   const response = await fetch(url);
   questions = await response.json();
   localStorage.setItem("questions", JSON.stringify(questions));
+}
+
+function toggleDarkMode() {
+  const body = document.body;
+  const elements = document.querySelectorAll("*");
+  body.classList.toggle("dark-mode");
+  elements.forEach((element) => {
+    element.classList.toggle("dark-mode");
+  });
 }
 
 function showNextQuestion() {
@@ -30,6 +40,16 @@ function showNextQuestion() {
     button.addEventListener("click", selectAnswer);
     answerButtonsEl.appendChild(button);
   });
+
+  if (quizCompleted) {
+    answerButtonsEl.innerHTML = "";
+    scoreEl.innerText = `${score} aciertos de ${questions.length} preguntas`;
+    const finishButton = document.createElement("button");
+    finishButton.innerText = "Finalizar juego";
+    finishButton.classList.add("btn");
+    answerButtonsEl.appendChild(finishButton);
+    finishButton.addEventListener("click", finishGame);
+  }
 }
 
 function updateScore() {
@@ -55,6 +75,12 @@ function selectAnswer(e) {
   }
 }
 
+function finishGame() {
+  quizCompleted = true;
+  answerButtonsEl.innerHTML = "";
+  scoreEl.innerText = `${score} aciertos de ${questions.length} preguntas`;
+}
+
 if (!localStorage.getItem("questions")) {
   getQuestions().then(() => {
     showNextQuestion();
@@ -63,3 +89,7 @@ if (!localStorage.getItem("questions")) {
   questions = JSON.parse(localStorage.getItem("questions"));
   showNextQuestion();
 }
+
+const modeButton = document.createElement("button");
+modeButton.innerHTML = "Modo oscuro/claro";
+modeButton.classList.add("button");
