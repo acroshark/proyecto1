@@ -1,7 +1,4 @@
-Juego de preguntas y respuestas sobre películas
-
-Juego de preguntas y respuestas sobre películas
-# proyectoconramas
+# Juego de preguntas y respuestas sobre películas
 
 ● Se proporciona un JSON que contiene un array de 50 objetos que
 representan preguntas sobre películas que contiene la pregunta,
