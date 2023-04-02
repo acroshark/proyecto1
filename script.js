@@ -17,15 +17,6 @@ async function getQuestions() {
   localStorage.setItem("questions", JSON.stringify(questions));
 }
 
-function toggleDarkMode() {
-  const body = document.body;
-  const elements = document.querySelectorAll("*");
-  body.classList.toggle("dark-mode");
-  elements.forEach((element) => {
-    element.classList.toggle("dark-mode");
-  });
-}
-
 function showNextQuestion() {
   const currentQuestion = questions[currentQuestionIndex];
   questionEl.innerText = currentQuestion.question;
@@ -70,15 +61,17 @@ function selectAnswer(e) {
   if (currentQuestionIndex < questions.length) {
     showNextQuestion();
   } else {
-    scoreEl.innerText = `${score} aciertos de ${questions.length} preguntas`;
-    quizCompleted = true;
+    finishGame();
   }
 }
 
 function finishGame() {
   quizCompleted = true;
   answerButtonsEl.innerHTML = "";
-  scoreEl.innerText = `${score} aciertos de ${questions.length} preguntas`;
+  questionEl.innerHTML = "";
+  scoreEl.innerText = ` ${score} aciertos de ${questions.length} preguntas`;
+  const scoreContainer = document.getElementById("question-container");
+  scoreContainer.classList.add("hide"); // Agregamos la clase hide al elemento
 }
 
 if (!localStorage.getItem("questions")) {
@@ -88,6 +81,15 @@ if (!localStorage.getItem("questions")) {
 } else {
   questions = JSON.parse(localStorage.getItem("questions"));
   showNextQuestion();
+}
+
+function toggleDarkMode() {
+  const body = document.body;
+  const elements = document.querySelectorAll("*");
+  body.classList.toggle("dark-mode");
+  elements.forEach((element) => {
+    element.classList.toggle("dark-mode");
+  });
 }
 
 const modeButton = document.createElement("button");
