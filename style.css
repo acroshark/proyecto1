@@ -38,7 +38,7 @@ body {
 #score-container {
   text-align: center;
   padding-top: 30px;
-/*  margin-top: 30px; */
+  /*  margin-top: 30px; */
   font-size: 20px;
 }
 
@@ -100,8 +100,104 @@ body {
 }
 
 #google_translate_element {
-    position: fixed;
-    bottom: 60px;
-    left: 50%;
-    transform: translateX(-50%);
+  position: fixed;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Estilo para el botón */
+.btn {
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 20px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+/* Estilo para el botón cuando se hace hover */
+.btn:hover {
+  background-color: #3e8e41;
+  color: white;
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Estilo para el contenedor de las preguntas */
+#question-container {
+  background-color: white;
+  background-clip: padding-box;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+/* Estilo para el contenedor de las preguntas en modo noche */
+.dark-mode #question-container {
+  background-color: #333;
+  color: white;
+  border-radius: 0px;
+  background-clip: padding-box;
+}
+
+/* Estilo para el contenedor de las respuestas */
+#answers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+/* Estilo para las respuestas */
+#answers button {
+  background-color: white;
+  color: black;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+/* Estilo para las respuestas en modo noche */
+.dark-mode #answers button {
+  background-color: #333;
+  color: white;
+  box-shadow: 2px 2px 4px rgba(255, 255, 255, 0.2);
+}
+
+/* Estilo para las respuestas cuando se hace hover */
+#answers button:hover {
+  background-color: #f2f2f2;
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Estilo para el mensaje de finalización */
+#quiz-finish-message {
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+/* Estilo para el mensaje de finalización en modo noche */
+.dark-mode #quiz-finish-message {
+  background-color: #333;
+  color: white;
+  box-shadow: 2px 2px;
+}
+
+.hide {
+  display: none;
 }
